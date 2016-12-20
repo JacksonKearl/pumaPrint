@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Rewards</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="profile-card " *ngFor="let goal of goals">
+    <ion-card-header>
+      {{goal.title}}
+
+      <div class="product-points">
+        <span>{{goal.points}}</span>
+      </div>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-title>
+        {{goal.description}}
+      </ion-card-title>
+    </ion-card-content>
+    <div class="center-me">
+
+    <button ion-button color="danger" round (click)="showConfirm(goal)">
+        Set as Target!
+     </button>
+   </div>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Score</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<div class="score-summary">
+
+  <ion-slides [options]="mySlideOptions" pager="true">
+    <ion-slide>
+      <h1>Goals</h1>
+      <h4 *ngIf="!user.currentTask">
+        Set personal goals for yourself, which we will reward with PUMA Points! You will recieve points proportianal to how difficult you will find the given task. Really challenge yourself for maximum benefit!
+      </h4>
+      <h4 *ngIf="user.currentTask">
+        Currently trying to <b><i>{{user.currentTask.title}}!</i></b>
+      </h4>
+      <h4 *ngIf="user.currentTask">
+        Based off of past data, you have a <b>{{user.currentTask.chance}}% chance</b> of making this goal. <i>Good luck!</i>
+      </h4>
+
+    </ion-slide>
+    <ion-slide class="graph">
+      <img src="img/graph1.png"/>
+      <h1>Fitness</h1>
+      <h6>Chance of meeting specific goal types:</h6>
+      <p>
+        <b>100%</b>: Group-Motivated
+      </p>
+      <p>
+        <b>70%</b>: Record-Breaking
+      </p>
+      <p>
+        <b>50%</b>: Personally Motivated
+      </p>
+      <p>
+        <b>20%</b>: High Intensity
+      </p>
+    </ion-slide>
+    <ion-slide class="graph">
+      <img src="img/graph2.png"/>
+      <h1>Health</h1>
+      <h6>Chance of meeting specific goal types:</h6>
+      <p>
+        <b>90%</b>: Eating Out
+      </p>
+      <p>
+        <b>85%</b>: Sleep
+      </p>
+      <p>
+        <b>50%</b>: Regualar Activity
+      </p>
+      <p>
+        <b>29%</b>: Helthy Cooking
+      </p>
+    </ion-slide>
+
+  </ion-slides>
+
+
+</div>
+
+<ion-scroll scrollY="true">
+
+  <ion-card class="profile-card " *ngFor="let goal of goals" [ngClass]="{'selected':goal==user.currentTask}">
+    <ion-card-header>
+      <span class="title"> {{goal.title}}: <i>{{goal.value}} Points</i></span>
+
+
+
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-title>
+        {{goal.description}}
+      </ion-card-title>
+    </ion-card-content>
+    <div class="center-me">
+
+    <button *ngIf="goal!=user.currentTask" ion-button color="danger" round (click)="showConfirm(goal)">
+        Set as Target!
+     </button>
+     <button *ngIf="goal==user.currentTask" ion-button color="danger" round>
+         <b>Targeting!</b>
+      </button>
+   </div>
+  </ion-card>
+
+</ion-scroll>

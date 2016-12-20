@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Profile</ion-title>
+    <ion-buttons end>
+    <button ion-button menuRight>
+      <ion-icon name="settings"></ion-icon>
+    </button>
+  </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<div class="profile-summary">
+  <img class="display-picture" [src]="user.dpURL" />
+
+  <div class="profile-text">
+    <div class="name">
+      {{user.name}}
+    </div>
+
+    <div class="bio" *ngIf="user.currentTask != null">
+      This week I'm going to <b><i>{{user.currentTask.title}}!</i></b>
+    </div>
+  </div>
+
+  <div class="profile-icons">
+      <button ion-fab *ngFor="let icon of user.icons">
+        <ion-icon name="{{icon}}"></ion-icon>
+        <img src="img/fake-icon-{{icon}}.png" onerror="this.style.display='none'"/>
+      </button>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab" (click)="goTab(0)" [ngClass]="{'selected':tab == 0}">
+    History
+  </div>
+  <div class="tab" (click)="goTab(1)" [ngClass]="{'selected':tab == 1}">
+    Summary
+  </div>
+  <div class="tab" (click)="goTab(2)" [ngClass]="{'selected':tab == 2}">
+    Rewards
+  </div>
+</div>
+
+<ion-card class="history-card" *ngIf="tab==0">
+  <ion-card-header>
+    Rewards History
+  </ion-card-header>
+  <ion-content class="card-content">
+      <ion-item *ngFor="let reward of user.completedTasks" [ngClass]="{'positive':reward.value > 0, 'negative':reward.value < 0}">
+        <ion-icon name="{{reward.icon}}" item-left>
+          <img class="fake-icon" src="img/fake-icon-{{reward.icon}}-black.png" onerror="this.style.display='none'"/>
+        </ion-icon>
+
+        <ion-icon name="" item-right>
+          <div class="history-card-point-value">
+          {{reward.value}}
+        </div>
+        </ion-icon>
+
+        <div class="history-card-title">
+          {{reward.title}}!
+        </div>
+        <div class="history-card-date">
+          {{reward.date}}
+        </div>
+      </ion-item>
+
+  </ion-content>
+</ion-card>
+
+<ion-card class="image-card" *ngIf="tab==1">
+  <ion-card-header>
+    Rewards Summary
+  </ion-card-header>
+  <ion-content class="card-content">
+    <img src="img/point-meter.png" />
+    <ion-card-title>
+      {{user.getTotalPoints()}} Current Points
+      <br/>
+      {{user.getLifetimePoints()}} Lifetime Points
+      <div class="bottom">
+      <div *ngIf="user.currentGoal">
+        {{user.currentGoal.value - user.getTotalPoints()}} points until you can <b><i>{{user.currentGoal.title}}!</i></b>
+      </div>
+      <div *ngIf="!user.currentGoal" class="no-reward-set">
+        No target reward set... use the <b>rewards</b> pane to choose a targeted reward.
+      </div>
+    </div>
+    </ion-card-title>
+  </ion-content>
+</ion-card>
+
+
+<ion-card class="history-card" *ngIf="tab==2">
+  <ion-card-header>
+    Redeem Rewards
+  </ion-card-header>
+  <ion-content class="card-content">
+      <ion-item *ngFor="let reward of user.goals" (click)="select(reward)" [ngClass]="{'selected': user.currentGoal == reward}">
+        <ion-icon name="{{reward.icon}}" item-left>
+          <img class="fake-icon" src="img/fake-icon-{{reward.icon}}-black.png" onerror="this.style.display='none'"/>
+        </ion-icon>
+
+        <ion-icon name="" item-right>
+          <div class="history-card-point-value">
+          {{reward.value}}
+        </div>
+        </ion-icon>
+
+        <div class="history-card-title">
+          {{reward.title}}!
+        </div>
+      </ion-item>
+
+
+  </ion-content>
+</ion-card>

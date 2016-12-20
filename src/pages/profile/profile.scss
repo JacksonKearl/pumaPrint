@@ -1,0 +1,176 @@
+page-profile {
+
+
+      .fake-icon {
+        width: 30px;
+        margin-right: -5px;
+      }
+
+  background-color: map-get($colors, 'dark');
+
+  .profile-summary {
+    background-color: map-get($colors, 'secondary');
+
+    //border-radius: 0px 0px 15px 15px;
+
+    margin-top: 40px;
+    padding: 10px;
+    .display-picture {
+      border-radius: 50%;
+      width: 150px;
+      float: left;
+      position: absolute;
+      top: 65px;
+    }
+    .profile-text {
+      padding-top: 10px;
+      float: right;
+      color: white;
+      width: calc(100% - 170px);
+      font-family: $font-stack;
+
+      .name {
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+      .bio {
+        font-size: 1.8rem;
+      }
+    }
+
+    .profile-icons {
+      position: absolute;
+      top:110px;
+      left: 130px;
+
+      margin: 50px;
+      color:white;
+      button {
+        background-color: map-get($colors, 'danger');
+        float: left;
+        margin: 2px;
+        height: 35px;
+        width: 35px;
+
+        img {
+          width: 30px;
+          color:white;
+        }
+      }
+    }
+    height: 200px;
+  }
+
+  .tabs {
+    margin-top: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-left: 30px;
+    margin-right: 30px;
+    //border-top: 3px solid map-get($colors, 'danger');
+    font-family: $font-stack;
+    font-size: 2rem;
+    width: -webkit-calc(100% - 60px);
+    width: calc(100% - 60px);
+
+    height: 30px;
+    background-color: map-get($colors, 'secondary');
+    .tab {
+      color: white;
+      padding-top: 2px;
+      width: 33.33%;
+      float: left;
+      text-align: center;
+      height: 40px;
+    }
+
+    .selected {
+      background-color: map-get($colors, 'danger');
+      font-weight: bold;
+    }
+
+
+  }
+
+  ion-card {
+    //height: calc(100%-200px) !important;
+    //position: absolute;
+    position: absolute;
+    top: 290px; // Use different number if you have a header
+    left:0;
+    right:0;
+    bottom: 0; // Use different number if you have a footer
+
+
+    ion-content {
+      height: -webkit-calc(100% - 43px);
+      height: calc(100% - 43px);
+
+    }
+
+    .card-title {
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 10px;
+    }
+    text-align: center;
+
+    img {
+      float: none !important;
+      width: 150px;
+      margin: 5px auto;
+    }
+
+    .bottom {
+      margin-top: 10px;
+      .no-reward-set {
+        margin-top: 30px;
+      }
+    }
+  }
+
+
+  .history-card {
+    .card-content {
+        top:-5px;
+    }
+
+    .history-card-point-value {
+      font-size: 3.0rem;
+      display: inline-block;
+      float: left;
+      margin-right: 10px;
+    }
+
+    .history-card-title {
+      font-size: 2.0rem;
+      text-overflow: ellipsis;
+      white-space: normal;
+    }
+
+    .history-card-date {
+      margin-top: -5px;
+      margin-left:5px;
+      font-size: 1.5rem;
+      color: #555;
+
+    }
+
+    ion-item {
+      min-height: 50px;
+      border-bottom: 1px solid #AAA;
+    }
+
+    .selected {
+      background-color: rgb(219, 219, 219);
+    }
+
+    .positive {
+      background-color: rgb(227, 255, 219);
+    }
+
+    .negative {
+      background-color: rgb(255, 191, 209)
+    }
+  }
+}

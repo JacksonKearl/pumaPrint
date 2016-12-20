@@ -1,0 +1,150 @@
+// http://ionicframework.com/docs/v2/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+
+
+// style the header for each page to be the red thing that we want
+ion-header {
+  button {
+    font-size: 2.0rem !important;
+    color: white !important;
+  }
+
+  .toolbar-background {
+    background-color: map-get($colors, 'danger');
+  }
+
+  ion-title {
+    div {
+      font-size: 2.5rem !important;
+      font-weight: bold !important;
+      font-family: $font-stack;
+      color: white !important;
+    }
+  }
+}
+
+// backgroud color for every page
+// ion-content {
+//   background-color: map-get($colors, 'dark') !important;
+// }
+
+// global card settings. two versions, with or without picture.
+ion-card {
+  border-radius: 10px !important;
+  font-family: $font-stack;
+
+  ion-card-header {
+    background-color: map-get($colors, 'danger');
+    color: white !important;
+    font-size: 2.3rem !important;
+    padding: 5px 16px !important;
+
+  }
+
+  ion-card-title {
+    font-size: 2.3rem !important;
+  }
+
+  p {
+    font-size: 1.8rem !important;
+  }
+
+  margin-bottom: 20px !important;
+}
+
+// picture version
+.image-card {
+  img {
+    width: 150px;
+    float: left;
+  }
+
+  button {
+    margin: 15px auto;
+    width: 200px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .bottom {
+    clear: both;
+  }
+}
+
+.center-me {
+text-align: center;
+}
+
+ion-menu {
+  ion-list {
+    position:relative;
+    top:50px;
+    font-family: $font-stack;
+    button {
+      img {
+        width: 20px;
+        color: white;
+        position: absolute;
+        left:15px;
+        top: 17px;
+
+      }
+
+    }
+  }
+  .footer-menu {
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
+    text-align: center;
+    img {
+      // position: absolute;
+      // bottom: 0;
+      display: inline-block;
+      width:150px;
+      margin: 0 auto;
+    }
+  }
+
+
+  ion-content {
+    background-color: #282828 !important;//map-get($colors, 'dark') !important;
+    padding-top:60px !important;
+    .item-block {
+      font-size: 2.0rem;
+      padding: 0 !important;
+      margin: 20px auto !important;
+      border: none !important;
+      border-top: none !important;
+      border-bottom: none !important;
+      color: white !important;
+      font-weight: bold !important;
+      width: 200px !important;
+      height: 40px !important;
+      border-radius: 20px;
+      overflow: hidden;
+      background-color: map-get($colors, 'danger') !important;
+      text-align: center;
+      .item-inner {
+        background-image: none !important;
+        border-bottom: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        position: relative;
+        top:-3px;
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Share</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="share-possibilities">
+
+    <ion-slides [options]="mySlideOptions" pager="true">
+      <ion-slide *ngFor="let goal of goals">
+        <ion-icon name="{{goal.type}}"></ion-icon>
+
+        <h1>{{goal.title}}</h1>
+        {{goal.description}} <b>{{goal.toComplete}}</b>
+
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+
+  <div class="search-icons">
+      <button ion-fab *ngFor="let icon of user.icons" (ngClick)="toggleTerm(icon)" [ngClass]="{'selected': searchTerms[icon]}">
+        <ion-icon name="{{icon}}"></ion-icon>
+        <img src="img/fake-icon-{{icon}}.png" onerror="this.style.display='none'"/>
+      </button>
+  </div>
+
+  <div *ngFor="let share of shared">
+  <ion-card class="profile-card"  [hidden]="!share.visible">
+    <ion-item class="header-bar">
+      <h2>{{share.name}}</h2>
+    </ion-item>
+
+    <img src="img/{{share.imageURL}}">
+
+    <ion-card-content>
+      <p>{{share.text}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>{{share.nlikes}} Likes</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>{{share.ncomments}} Comments</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</div>
+
+</ion-content>
